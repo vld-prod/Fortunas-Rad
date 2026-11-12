@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#fff8f1">
+  <meta name="description" content="Fortunas-Rad: Das bunte Glücksrad für Entscheidungen, zufällige Paare und Teams. Kostenlos, ohne Anmeldung und direkt im Browser.">
+  <title>Fortunas-Rad — Dreh deine Entscheidung</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#start" aria-label="Fortunas-Rad — Startseite">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 40" fill="none"><path d="M20 3.5 35.7 12.6v14.8L20 36.5 4.3 27.4V12.6L20 3.5Z" fill="currentColor"/><path d="M20 10v20M11.4 15l17.2 10M11.4 25l17.2-10" stroke="#fff" stroke-width="2.4" stroke-linecap="round"/><circle cx="20" cy="20" r="3.4" fill="#fff"/></svg>
+        </span>
+        <span class="brand-name">Fortunas<span>-Rad</span></span>
+      </a>
+      <div class="header-right">
+        <span class="privacy-note"><span class="privacy-dot"></span>Bleibt alles auf deinem Gerät</span>
+        <div class="settings-anchor">
+          <button class="settings-toggle" id="settings-toggle" type="button" aria-expanded="false" aria-controls="settings-panel">
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 8.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" stroke="currentColor" stroke-width="1.8"/><path d="m19.4 13.5 1.1.8-1.6 2.8-1.3-.5a7.7 7.7 0 0 1-1.6.9l-.2 1.4h-3.2l-.2-1.4a7.7 7.7 0 0 1-1.6-.9l-1.3.5-1.6-2.8 1.1-.8a7.2 7.2 0 0 1 0-1.9l-1.1-.8 1.6-2.8 1.3.5a7.7 7.7 0 0 1 1.6-.9l.2-1.4h3.2l.2 1.4a7.7 7.7 0 0 1 1.6.9l1.3-.5 1.6 2.8-1.1.8a7.2 7.2 0 0 1 0 1.9Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            <span>Einstellungen</span>
+          </button>
+          <section class="settings-panel" id="settings-panel" hidden aria-label="Einstellungen">
+            <div class="settings-heading"><span class="settings-kicker">DEIN DREH, DEINE REGELN</span><strong>Rad-Einstellungen</strong></div>
+            <label class="setting-line" for="duration-range"><span>Drehdauer</span><span class="setting-value" id="duration-value">8 s</span></label>
+            <input id="duration-range" class="duration-range" type="range" min="3" max="15" step="1" value="8">
+            <label class="setting-line tempo-line" for="tempo-select"><span>Drehgefühl</span>
+              <select id="tempo-select"><option value="ruhig">Ruhig</option><option value="normal" selected>Ausgewogen</option><option value="flott">Flott</option></select>
+            </label>
+            <label class="setting-switch"><span><strong>Soundeffekte</strong><small>Ein sanftes Klicken beim Drehen</small></span><input id="sound-toggle" type="checkbox"><span class="switch-ui" aria-hidden="true"></span></label>
+            <label class="setting-switch"><span><strong>Gewinner entfernen</strong><small>Nach jeder Runde aus der Liste nehmen</small></span><input id="remove-winner-toggle" type="checkbox"><span class="switch-ui" aria-hidden="true"></span></label>
+            <p class="settings-footnote">Deine Einstellungen bleiben in diesem Browser gespeichert.</p>
+          </section>
+        </div>
+      </div>
+    </header>
+
+    <main id="start">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="eyebrow"><span class="eyebrow-sparkle" aria-hidden="true">✦</span> WENIGER GRÜBELN. MEHR GLÜCK.</div>
+        <h1 id="hero-title">Die Entscheidung<br><span>dreht sich.</span></h1>
+        <p>Namen rein, Glücksrad an — oder bilde faire Paare und Teams. Der Zufall übernimmt den Rest.</p>
+      </section>
+
+      <div class="mode-row">
+        <span class="mode-label">WÄHLE DEINEN MODUS</span>
+        <div class="mode-switch" role="tablist" aria-label="Zufallsmodus auswählen">
+          <button class="mode-button is-active" type="button" role="tab" aria-selected="true" data-mode="wheel">
+            <span class="mode-icon wheel-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="8.4" stroke="currentColor" stroke-width="1.8"/><path d="m12 3.6 2.1 7.1L20 7.3M20.4 12l-7.2 1.1 4.8 5.4M12 20.4l-1.1-7.2-5.4 4.8M3.6 12l7.1-2.1-4.8-5.4" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/></svg></span>
+            <span><strong>Glücksrad</strong><small>Eine Person gewinnt</small></span>
+          </button>
+          <button class="mode-button" type="button" role="tab" aria-selected="false" data-mode="pairs">
+            <span class="mode-icon pairs-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="8" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/><circle cx="16" cy="8" r="3" stroke="currentColor" stroke-width="1.8"/><path d="M2.8 19a5.2 5.2 0 0 1 10.4 0M10.8 19a5.2 5.2 0 0 1 10.4 0" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span><strong>Paare bilden</strong><small>Zufällig zu zweit</small></span>
+          </button>
+          <button class="mode-button" type="button" role="tab" aria-selected="false" data-mode="teams">
+            <span class="mode-icon teams-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><circle cx="9" cy="8" r="2.8" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="9" r="2.2" stroke="currentColor" stroke-width="1.7"/><path d="M3.4 19a5.6 5.6 0 0 1 11.2 0M15 14.5a4.6 4.6 0 0 1 5.6 4.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <span><strong>Teams bilden</strong><small>Fair aufteilen</small></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="app-grid">
+        <section class="app-card list-card" aria-labelledby="list-title">
+          <div class="card-heading">
+            <div class="card-title-group"><span class="step-number">01</span><div><span class="section-kicker">ZUERST</span><h2 id="list-title">Deine Liste</h2></div></div>
+            <span class="entry-counter" id="entry-count">0 Einträge</span>
+          </div>
+          <div class="editor-tabs" id="editor-tabs" role="tablist" aria-label="Liste und Ergebnis" hidden>
+            <button type="button" class="editor-tab is-active" id="input-tab" role="tab" aria-selected="true" aria-controls="list-pane">Teilnehmende <span id="input-tab-count">0</span></button>
+            <button type="button" class="editor-tab" id="output-tab" role="tab" aria-selected="false" aria-controls="results-pane">Ergebnis <span class="result-tab-dot" id="result-tab-dot" hidden>•</span></button>
+          </div>
+          <div class="text-area-wrap" id="list-pane" role="tabpanel" aria-labelledby="input-tab">
+            <textarea id="entries-input" spellcheck="false" autocomplete="off" autocapitalize="sentences" aria-label="Teilnehmende, jeweils ein Eintrag pro Zeile" placeholder="Zum Beispiel:&#10;Mia&#10;Noah&#10;Emilia&#10;Ben&#10;…"></textarea>
+            <div class="textarea-footer"><span><span class="tiny-key">↵</span> Ein Name pro Zeile</span><span id="input-count-label">Noch leer</span></div>
+          </div>
+          <div class="text-area-wrap result-area-wrap" id="results-pane" role="tabpanel" aria-labelledby="output-tab" hidden>
+            <textarea id="results-text" readonly aria-label="Zufallsergebnis" placeholder="Dein Ergebnis erscheint hier — bereit, wenn du es bist."></textarea>
+            <div class="textarea-footer"><span><span class="result-live-dot"></span> Nur für dich sichtbar</span><button class="copy-button" id="copy-result" type="button" disabled>Ergebnis kopieren</button></div>
+          </div>
+          <div class="team-size-row" id="team-size-row" hidden>
+            <label for="team-size">Personen pro Team</label>
+            <div class="number-stepper"><button type="button" id="team-minus" aria-label="Eine Person weniger pro Team">−</button><input id="team-size" type="number" value="4" min="2" max="20" inputmode="numeric" aria-label="Personen pro Team"><button type="button" id="team-plus" aria-label="Eine Person mehr pro Team">+</button></div>
+          </div>
+          <div class="list-actions">
+            <button class="secondary-button" id="load-list" type="button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15V3m0 0L7.5 7.5M12 3l4.5 4.5M4 14v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Liste laden</button>
+            <button class="secondary-button" id="save-list" type="button"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 15v4a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>Liste speichern</button>
+            <input id="file-input" type="file" accept=".txt,.csv,text/plain,text/csv" hidden>
+          </div>
+          <p class="local-note"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 2.5 16 5v4.4c0 4.2-2.5 6.8-6 8.1-3.5-1.3-6-3.9-6-8.1V5l6-2.5Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="m7.5 9.8 1.6 1.6 3.5-3.6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Speichert automatisch — nur in deinem Browser.</p>
+        </section>
+
+        <section class="app-card play-card" aria-labelledby="play-title">
+          <div class="card-heading play-heading">
+            <div class="card-title-group"><span class="step-number step-number-two">02</span><div><span class="section-kicker" id="play-kicker">JETZT WIRD'S SPANNEND</span><h2 id="play-title">Das Glücksrad</h2></div></div>
+            <span class="ready-pill"><span></span><span id="ready-label">BEREIT</span></span>
+          </div>
+
+          <div class="wheel-area" id="wheel-area">
+            <div class="wheel-meta"><span>DEIN RAD</span><span class="wheel-count" id="wheel-count">0 FELDER</span></div>
+            <div class="wheel-wrap" id="wheel-wrap">
+              <div class="wheel-glow" aria-hidden="true"></div>
+              <div class="wheel-rim" aria-hidden="true"></div>
+              <canvas id="wheel-canvas" width="640" height="640" aria-label="Glücksrad mit deinen Einträgen"></canvas>
+              <div class="wheel-hub" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m12 2 2.2 7.1L21 12l-6.8 2.9L12 22l-2.2-7.1L3 12l6.8-2.9L12 2Z" fill="currentColor"/><circle cx="12" cy="12" r="2" fill="#fff"/></svg></div>
+              <div class="wheel-pointer" aria-hidden="true"><span></span></div>
+              <div class="wheel-empty" id="wheel-empty"><span class="empty-sparkle">✦</span><strong>Deine Namen fehlen noch</strong><span>Trag links ein, wer mitspielt.</span></div>
+            </div>
+            <div class="winner-result" id="winner-result" hidden aria-live="polite"><span class="winner-star">✦</span><span class="winner-copy"><small>DER ZUFALL HAT ENTSCHIEDEN</small><strong id="winner-name"></strong></span><button id="spin-again" type="button" aria-label="Noch einmal drehen">↻</button></div>
+            <button class="primary-button spin-button" id="spin-button" type="button" disabled><span class="button-sparkle" aria-hidden="true">✦</span><span id="spin-button-label">RAD DREHEN</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+            <p class="play-caption" id="spin-caption">Füge mindestens einen Eintrag hinzu, dann kann's losgehen.</p>
+          </div>
+
+          <div class="groups-area" id="groups-area" hidden>
+            <div class="group-art" aria-hidden="true"><span class="art-star star-one">✦</span><span class="art-star star-two">✧</span><span class="art-person person-one"><i></i></span><span class="art-person person-two"><i></i></span><span class="art-person person-three"><i></i></span><span class="art-loop loop-one"></span><span class="art-loop loop-two"></span><span class="art-center">&</span></div>
+            <div class="group-copy"><span class="group-kicker" id="group-kicker">GUT GEMISCHT</span><h3 id="group-title">Zufall bringt<br>euch zusammen.</h3><p id="group-description">Alle Namen werden gemischt und fair aufgeteilt. Ein Klick genügt.</p></div>
+            <div class="group-result-preview" id="group-result-preview" hidden></div>
+            <button class="primary-button group-button" id="group-button" type="button" disabled><span class="button-sparkle" aria-hidden="true">✦</span><span id="group-button-label">PAARE AUSLOSEN</span><span class="button-arrow" aria-hidden="true">↗</span></button>
+            <p class="play-caption" id="group-caption">Füge mindestens zwei Namen hinzu.</p>
+          </div>
+        </section>
+      </div>
+
+      <footer class="site-footer"><span class="footer-brand">FORTUNAS-RAD <span>✦</span></span><span>Kleine Entscheidungen, große Erleichterung.</span><span>Keine Anmeldung. Keine Datenübertragung.</span></footer>
+    </main>
+  </div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
